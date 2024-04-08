@@ -17,5 +17,4 @@ RUN git clone https://github.com/Oya-Tomo/translator-bot .
 
 RUN npm install
 
-RUN npm run build
-RUN npm run start
+RUN npm run dev
