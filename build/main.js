@@ -8,11 +8,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.bot = void 0;
 const discord_js_1 = require("discord.js");
 const interactions_1 = require("./interactions");
-const fs_1 = require("fs");
+const dotenv_1 = __importDefault(require("dotenv"));
+dotenv_1.default.config();
 exports.bot = new discord_js_1.Client({
     intents: ["MessageContent", "Guilds", "GuildMembers", "GuildMessages"],
 });
@@ -51,11 +55,7 @@ exports.bot.on("interactionCreate", (interaction) => __awaiter(void 0, void 0, v
 }));
 let token;
 function loadConfig() {
-    const ENV_FILE = "env.json";
-    if ((0, fs_1.existsSync)(ENV_FILE)) {
-        let json = JSON.parse((0, fs_1.readFileSync)(ENV_FILE, "utf8"));
-        token = json.token;
-    }
+    token = process.env.token;
 }
 loadConfig();
 exports.bot.login(token);
