@@ -13,7 +13,7 @@ RUN apt-get -y install curl dirmngr apt-transport-https lsb-release ca-certifica
 RUN curl -sL https://deb.nodesource.com/setup_21.x | bash -
 RUN apt-get install -y nodejs
 
-RUN git clone https://github.com/Oya-Tomo/translator-bot
+RUN git clone https://github.com/Oya-Tomo/translator-bot .
 
 RUN npm install
 
