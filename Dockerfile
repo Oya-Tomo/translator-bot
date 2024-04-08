@@ -18,4 +18,5 @@ RUN git clone https://github.com/Oya-Tomo/translator-bot .
 RUN npm install
 
 CMD npm run build
+CMD ls ./build -R
 CMD node build/main.js
