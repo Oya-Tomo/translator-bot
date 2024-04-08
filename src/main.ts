@@ -2,6 +2,9 @@ import { Client, Interaction, Message, SlashCommandBuilder } from "discord.js";
 import { translateInteraction } from "./interactions";
 import { existsSync, readFileSync } from "fs";
 
+import dotenv from "dotenv";
+dotenv.config();
+
 export const bot = new Client({
   intents: ["MessageContent", "Guilds", "GuildMembers", "GuildMessages"],
 });
@@ -46,11 +49,7 @@ bot.on("interactionCreate", async (interaction: Interaction) => {
 let token: string | undefined;
 
 function loadConfig() {
-  const ENV_FILE = "env.json";
-  if (existsSync(ENV_FILE)) {
-    let json = JSON.parse(readFileSync(ENV_FILE, "utf8"));
-    token = json.token;
-  }
+  token = process.env.token;
 }
 
 loadConfig();
