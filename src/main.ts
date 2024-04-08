@@ -1,6 +1,6 @@
 import { Client, Interaction, Message, SlashCommandBuilder } from "discord.js";
 import { translateInteraction } from "./interactions";
-import { existsSync, readFileSync } from "fs";
+import express from "express";
 
 import dotenv from "dotenv";
 dotenv.config();
@@ -55,3 +55,13 @@ function loadConfig() {
 loadConfig();
 
 bot.login(token);
+
+const server = express();
+
+server.get("/healthz", (req, res) => {
+  res.status(200).send("OK");
+});
+
+server.listen(process.env.port, () => {
+  console.log("[INFO] start server");
+});

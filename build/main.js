@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.bot = void 0;
 const discord_js_1 = require("discord.js");
 const interactions_1 = require("./interactions");
+const express_1 = __importDefault(require("express"));
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 exports.bot = new discord_js_1.Client({
@@ -59,3 +60,10 @@ function loadConfig() {
 }
 loadConfig();
 exports.bot.login(token);
+const server = (0, express_1.default)();
+server.get("/healthz", (req, res) => {
+    res.status(200).send("OK");
+});
+server.listen(process.env.port, () => {
+    console.log("[INFO] start server");
+});
