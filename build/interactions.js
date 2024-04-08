@@ -14,9 +14,10 @@ const translate_1 = require("./translate");
 function translateInteraction(interaction, lang) {
     return __awaiter(this, void 0, void 0, function* () {
         var _a, _b;
+        yield interaction.reply("Work In Progress");
         let text = (_b = (_a = interaction.options.get("text")) === null || _a === void 0 ? void 0 : _a.value) === null || _b === void 0 ? void 0 : _b.toString();
         let output = yield (0, translate_1.translate)(lang, text);
-        yield interaction.reply(`:pen_fountain:${text}\n:pen_ballpoint:${output}`);
+        yield interaction.editReply(`:pen_fountain:${text}\n:pen_ballpoint:${output}`);
     });
 }
 exports.translateInteraction = translateInteraction;
