@@ -1,8 +1,8 @@
 FROM ubuntu:latest
 
-RUN mkdir /var/www/
-RUN mkdir /var/www/bot
-WORKDIR /var/www/bot
+# RUN mkdir /var/www/
+# RUN mkdir /var/www/bot
+# WORKDIR /var/www/bot
 
 RUN apt-get -y update
 RUN apt-get -y upgrade
@@ -17,6 +17,6 @@ RUN git clone https://github.com/Oya-Tomo/translator-bot .
 
 RUN npm install
 
-COPY /etc/secrets/env.json ./
+# COPY /etc/secrets/env.json
 
 CMD node build/main.js
